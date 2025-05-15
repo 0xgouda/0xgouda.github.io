@@ -11,7 +11,7 @@ After a long journey of searching projects, interacting with the community and s
 
 ## pgwatch RPC integration
 
-pgwatch is postgresql servers monitoring solution, it has an embedded grafana dashboard, built with scale in mind where a single instance can monitor thousands of servers and many other features.
+[pgwatch](https://github.com/cybertec-postgresql/pgwatch) is postgresql servers monitoring solution, it has an embedded grafana dashboard, built with scale in mind where a single instance can monitor thousands of servers and many other features. 
 
 our focus here is on the data exporting options, pgwatch has builtin support for exporting data to postgres (and its flavours), prometheus and json. for sure this won't be enough to all users, so they added an RPC client that can send the data to a server which is then responsible of routing the data to the user's desired data solution.
 
@@ -20,27 +20,46 @@ And an implementation of an RPC server that integrates with pgwatch has been dev
 And now some more enhancements are required to be added to this pgwatch3_rpc_server, which include:
 1. Provide an authentication protocol for the current RPC implementation
 2. Add support for TLS to protect auth keys and data sent
-3. Additional sink implementations 
-4. Improved developer experience for building custom sinks
+3. Improve Architecture
+4. Additional sink implementations 
+5. Improved developer experience for building custom sinks
 
-### enhancements outline
-- Authentication: Implement authentication middleware that uses API Keys to limit &
-secure access to data sinks
-  - (breaking change) the pgwatch rpc client will get updated to support api keys authentication
+### Outline
 
-- TLS: Add self-signed certificates generation functionality and user their credentials to encrypt the connection
-  - (breaking change) the pgwatch rpc client will get update to connect over TLS (probably skipping certificate validation)
+1. Improved Architecture
 
-- improved dev experience: create a data sink template that has detailed documentation demonstrating to users the interfaces they should implement
-  - (this section may get changed as we are rethinking about the best way to enhance development experience but this is what it is up to for now)
+    - All the codebase especially shared logic or repeated code will be defined in functions/interfaces to make the codebase more modular
 
-- Addition Sinks:
-  1. ​AWS Cloudwatch -> AWS’s metric analytics solution
-  2. ElasticSearch -> Search and analytics engine
-  3. Splunk -> Security and event-management solution
-  4. MongoDB -> NoSql Flexible Schema logging
-  5. Azure log analytics -> Azure’s log analytics solution
-  6. Google cloud pub/sub -> Google’s messaging & event streaming solution
+2. ​Authentication
+
+    - Breaking Change: pgwatch3 client has to be updated to send the api key with each RPC call
+    - On receiver running it generates a robust api key and saves it to a file with strict permissions
+    - The client copies the key and then Sends it with the parameters passed to the RPC function
+    - The Server then uses a middleware function to Validate the api key parameter before processing the RPC call
+    - On the receiver rerunning it overwrites the file invalidating the api key
+
+3. TLS & HTTPs
+
+    - Breaking Change: pgwatch3 client has to be updated to connect via TLS
+    - On receiver running it runs a shell script that uses openssl to generate self-signed certificates and keys
+    - Create a new tls listener and use the certificate/keys to encrypt the connection ​
+
+4. ​Sink Template
+
+    - Create a template receiver with only sink logic interfaces left to
+    the user to implement with clear inline comments & README
+    file to guide the developer how to implement those interfaces
+    - Note: we are still rethinking other options to improve sinks development experience for users any suggestions are welcomed
+
+5. Additional Sinks
+
+    - implement more data sinks that both covers highly used solutions and improves the variety of the existing examples
+    1. AWS Cloudwatch -> AWS’s metrics analytics solution
+    2. ElasticSearch -> Search and analytics engine
+    3. Splunk -> Security and event-management solution
+    4. MongoDB -> NoSql Flexible Schema logging
+    5. Azure log analytics -> Azure’s log analytics solution
+    6. Google cloud pub/sub -> Google’s messaging & event streaming solution
 
 ### Flow chart
 ![Flow Chart](/assets/images/Flowchart.jpg)
