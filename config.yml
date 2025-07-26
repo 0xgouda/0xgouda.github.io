@@ -1,0 +1,68 @@
+baseURL: "https://0xgouda.github.io"
+title: "Ahmed's DevLog"
+pagerSize: 5
+theme: PaperMod
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minifyOutput: true
+
+params:
+  env: production
+  title: Ahmed Gouda
+  description: "Talking Tech and Exploring Software Internals"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Ahmed Gouda
+  DateFormat: "January 2, 2006"
+  defaultTheme: dark # dark, light, auto
+  disableThemeToggle: true
+
+  ShowReadingTime: false
+  ShowShareButtons: false
+  ShowPostNavLinks: false
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: false
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableFingerprinting: true
+    favicon: "my-icon.png"
+
+  homeInfoParams:
+    Title: $ whoami
+    Content: |
+      - I'm a software engineer who loves exploring software internals,  
+        contributing to open source, and building cool stuff from scratch.  
+      - Currently I am part of [PostgreSQL's GSoC'25 program](https://summerofcode.withgoogle.com/programs/2025/projects/4Be9mT3p)
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/0xgouda"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/ahmed-gouda-1462b022b"
+    - name: X
+      url: "https://x.com/gouda0x"
+
+  cover:
+    hidden: false
+    hiddenInList: false
+    hiddenInSingle: false
+
+menu:
+  main:
+    - identifier: Blog
+      name: Blog
+      url: /posts/
+      weight: 1
