@@ -10,6 +10,16 @@ buildExpired: false
 
 minifyOutput: true
 
+outputs:
+  home:
+    - HTML
+    - RSS
+
+outputFormats:
+  RSS:
+    baseName: "feed"
+
+
 params:
   env: production
   title: Ahmed Gouda
