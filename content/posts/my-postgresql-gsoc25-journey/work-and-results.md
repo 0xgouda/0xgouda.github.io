@@ -1,17 +1,23 @@
 +++
 date = '2025-06-17T16:44:04+03:00'
 draft = false
-title = "My Postgresql GSoC'25 Journey"
+title = "GSoC'25 at PostgreSQL: Work and Results"
 tags = ["postgresql", "gsoc"]
+weight = 2
 +++
 
-### Postgres community bonding
+In the [previous post](./acceptance.md), I discussed GSoC, 
+my road to acceptance at PostgreSQL, and my project deliverables. 
+
+Today, I will share my experience with the PostgreSQL community, and the work I did.
+
+### Postgres Community Bonding
 
 The first phase of GSoC is community bonding, where the mentee gets to know the community of his organization.
 
-For Postgres, I started searching for the communication channels used by contributors, I found out about [Postgres mailing lists](https://www.postgresql.org/list/) which unfortuanetly i hadn't involved into it that much till now, but i also discovered the [PostgreSQL Hacking](https://discord.gg/GavkM38HNX) Discord channel and the Hacking Workshops they host every month to study and discuss PostgreSQL topics, which has been a great learning resource for me since then.
+For Postgres, I started searching for the communication channels used by contributors, I found out about [Postgres mailing lists](https://www.postgresql.org/list/) which unfortunately I hadn't been involved into it that much till now, but I also discovered the [PostgreSQL Hacking](https://discord.gg/GavkM38HNX) Discord channel and the Hacking Workshops they host every month to study and discuss PostgreSQL topics, which have been a great learning resource for me since then.
 
-Also I started looking for PostgreSQL-related projects to contribute to and found out that there are not that many starter issues in the main PostgreSQL engine itself, but the good part is that there were a lot of other projects that integrate with Postgres and build on top of it, which had a good amount of marked starter issues to help aspiring contributors get started. One of them was [pg_duckdb](https://github.com/duckdb/pg_duckdb) the official PostgreSQL extension for DuckDB, where I opened a [PR adding SQLSmith CI tests](https://github.com/duckdb/pg_duckdb/pull/812).
+Also, I started looking for PostgreSQL-related projects to contribute to and found out that there are not that many starter issues in the main PostgreSQL engine, but there were a lot of other projects that integrate with Postgres and build on top of it, which had a good amount of marked starter issues to help aspiring contributors get started. One of them was [pg_duckdb](https://github.com/duckdb/pg_duckdb) the official PostgreSQL extension for DuckDB, where I opened a PR adding [SQLSmith CI tests](https://github.com/duckdb/pg_duckdb/pull/812).
 
 ### Coding Period
 
@@ -39,7 +45,7 @@ That led me to discover some issues and suggest optimizations.
 Then I started working on my first milestone, adding TLS encryption support to pgwatch RPC sink. 
 
 I spent most of the time searching (TLS, Golang TLS support, RPC & TLS integration, etc.), 
-Also the mentor pointed out to me that they had worked on a similar idea in 
+also the mentor pointed out to me that they had worked on a similar idea in 
 [another project](https://github.com/cybertec-postgresql/vip-manager/blob/master/checker/etcd_leader_checker.go), 
 which helped me a lot while reading its code. 
 
@@ -50,7 +56,7 @@ which helped me a lot while reading its code.
 
 And voila, 
 [pgwatch v3.6](https://github.com/cybertec-postgresql/pgwatch/releases/tag/v3.6.0) 
-supports optional TLS encryption for data sent over the RPC channel
+supports optional TLS encryption for data sent over the RPC channel.
 
 #### Example Usage
 
@@ -66,7 +72,7 @@ go run ./cmd/pgwatch [flags] --sink=rpc://[host:ip]?sslrootca=ca.crt
 
 ---
 
-I continued reading pgwatch codebase, and I was able to dicover and resolve more issues.
+I continued reading the pgwatch codebase, and I was able to discover and resolve more issues.
 
 #### Pull Requests
 
@@ -78,7 +84,7 @@ I continued reading pgwatch codebase, and I was able to dicover and resolve more
 - [fix `Source.Equal()` presets comparison](https://github.com/cybertec-postgresql/pgwatch/pull/831)
 
 After that, I was supposed to start working on adding authentication support to the current RPC sink implementation, 
-and that was when I discovered that the currently used `net/rpc` golang package is very basic and limited, 
+and that was when I discovered that the currently used `net/rpc` Golang package is very basic and limited, 
 although there were a couple of ways to implement our desired **Basic Auth** functionality with it, 
 I saw that it will be better to migrate to a more robust RPC framework that is better maintained and has more functionalities.
 
@@ -89,7 +95,7 @@ and large ecosystem made me decide to go ahead with it.
 
 I started by presenting this idea to my mentors, pointing out its benefits and optimizations, 
 and I was asked to implement a local draft PR 
-so they can see it in action and estimate the amount of the change it would cause.
+so they could see it in action and estimate the amount of change it would cause.
 
 #### Pull Requests
 
@@ -97,7 +103,7 @@ so they can see it in action and estimate the amount of the change it would caus
 
 They liked it, and the gRPC migration got approved, and our deliverables timeline got updated accordingly. 
 
-Now I rewrote the RPC sink for pgwatch to be a gRPC client, and all sinks in pgwatch_rpc_server 
+So I rewrote the RPC sink for pgwatch to be a gRPC client, and all sinks in pgwatch_rpc_server 
 got migrated to gRPC, and finally, I re-added TLS support on top of gRPC and used interceptors to add Basic Auth support.
 
 #### Pull Requests
@@ -136,7 +142,7 @@ go run ./cmd/pgwatch [flags] --sink=grpc://user:pwd@[host:ip]?sslrootca=ca.crt
 
 ---
 
-At the same time, new issues irrelevant to my pgwatch RPC work got opened, 
+At the same time, new issues irrelevant to my pgwatch RPC work got opened in pgwatch, 
 and my experience with reading the codebase and fixing issues in it 
 made me able to reproduce and fix some of them :).
 
@@ -145,9 +151,9 @@ made me able to reproduce and fix some of them :).
 - [allow metrics loading from folder](https://github.com/cybertec-postgresql/pgwatch/pull/889)
 - [fix `updateSources()` query parameters number](https://github.com/cybertec-postgresql/pgwatch/pull/875)
 
-Also, I started reading [pgwatch docs](https://pgwat.ch), 
-and figured out some issues and submitted updated suggestions 
-for them That got accepted and merged.
+Also, I started reading the [pgwatch docs](https://pgwat.ch), 
+and figured out some issues and submitted update suggestions 
+for them that got accepted and merged.
 
 #### Pull Requests
 
@@ -160,7 +166,7 @@ Then it was time to start working on improving developer experience for building
 I researched and tested a lot of ideas for this, and finally found out that the simplest and most effective 
 approach is to provide a mini **sinks development tutorial** that explains the different functions from the
 pgwatch gRPC API, their parameters, return values, and how users can make use of the predefined server logic
-to easily develop their own custom sinks.
+in pgwatch_rpc_server to easily develop their own custom sinks.
 
 #### Pull Requests
 
@@ -176,7 +182,7 @@ and they wanted new sinks for a Full-text search engine and Apache Iceberg.
 
 Also, I proposed adding a GCP pub/sub sink that publishes data to Google Cloud, 
 then users can register subscribers (subs) to pull data from it, 
-and hence be able to easily route the data to different data storage and analytics solutions, 
+and hence be able to easily route the metrics to different data solutions using Google Cloud, 
 and its addition got approved.
 
 #### Pull Requests
