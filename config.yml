@@ -28,11 +28,11 @@ params:
   author: Ahmed Gouda
   DateFormat: "January 2, 2006"
   defaultTheme: dark # dark, light, auto
-  disableThemeToggle: true
+  disableThemeToggle: false
 
   ShowReadingTime: false
   ShowShareButtons: false
-  ShowPostNavLinks: false
+  ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   ShowWordCount: false
