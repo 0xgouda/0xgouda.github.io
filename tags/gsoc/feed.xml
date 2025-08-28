@@ -1,6 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Gsoc on Ahmed's DevLog</title><link>https://0xgouda.github.io/tags/gsoc/</link><description>Recent content in Gsoc on Ahmed's DevLog</description><generator>Hugo -- 0.148.2</generator><language>en</language><lastBuildDate>Tue, 17 Jun 2025 16:44:04 +0300</lastBuildDate><atom:link href="https://0xgouda.github.io/tags/gsoc/feed.xml" rel="self" type="application/rss+xml"/><item><title>My Postgresql GSoC'25 Journey</title><link>https://0xgouda.github.io/posts/my-postgresql-gsoc25-journey/</link><pubDate>Tue, 17 Jun 2025 16:44:04 +0300</pubDate><guid>https://0xgouda.github.io/posts/my-postgresql-gsoc25-journey/</guid><description>&lt;h3 id="postgres-community-bonding">Postgres community bonding&lt;/h3>
-&lt;p>The first phase of GSoC is community bonding, where the mentee gets to know the community of his organization.&lt;/p>
-&lt;p>For Postgres, I started searching for the communication channels used by contributors, I found out about &lt;a href="https://www.postgresql.org/list/">Postgres mailing lists&lt;/a> which unfortuanetly i hadn&amp;rsquo;t involved into it that much till now, but i also discovered the &lt;a href="https://discord.gg/GavkM38HNX">PostgreSQL Hacking&lt;/a> Discord channel and the Hacking Workshops they host every month to study and discuss PostgreSQL topics, which has been a great learning resource for me since then.&lt;/p></description></item><item><title>pgwatch RPC</title><link>https://0xgouda.github.io/posts/pgwatch-rpc/</link><pubDate>Mon, 12 May 2025 16:44:04 +0300</pubDate><guid>https://0xgouda.github.io/posts/pgwatch-rpc/</guid><description>&lt;h2 id="postgresql-gsoc-acceptance">PostgreSQL GSoC Acceptance&lt;/h2>
-&lt;p>After a long journey of searching projects, interacting with the community and starring at the codebase late night trying to understand the workflow &amp;amp; resolve bugs i have been &lt;a href="https://summerofcode.withgoogle.com/programs/2025/projects/4Be9mT3p">accepted&lt;/a> at &lt;strong>PostgreSQL&amp;rsquo;s GSoC'25 program&lt;/strong>!!, And here i will be sketching the outline of my &lt;strong>Enhancements to pgwatch v3 rpc integration&lt;/strong> proposal deliverables.&lt;/p>
-&lt;h2 id="pgwatch-rpc-integration">pgwatch RPC integration&lt;/h2>
-&lt;p>&lt;a href="https://github.com/cybertec-postgresql/pgwatch">Pgwatch&lt;/a> is PostgreSQL servers monitoring solution, it has an embedded grafana dashboard, built with scale in mind where a single instance can monitor thousands of servers and many other features, &lt;a href="https://pgwat.ch">Pgwatch Docs&lt;/a>.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Gsoc on Ahmed's DevLog</title><link>https://0xgouda.github.io/tags/gsoc/</link><description>Recent content in Gsoc on Ahmed's DevLog</description><generator>Hugo -- 0.149.0</generator><language>en</language><lastBuildDate>Tue, 17 Jun 2025 16:44:04 +0300</lastBuildDate><atom:link href="https://0xgouda.github.io/tags/gsoc/feed.xml" rel="self" type="application/rss+xml"/><item><title>GSoC'25 at PostgreSQL: Acceptance</title><link>https://0xgouda.github.io/posts/my-postgresql-gsoc25-journey/acceptance/</link><pubDate>Mon, 12 May 2025 16:44:04 +0300</pubDate><guid>https://0xgouda.github.io/posts/my-postgresql-gsoc25-journey/acceptance/</guid><description>&lt;h3 id="what-is-gsoc"&gt;What is GSoC?&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://summerofcode.withgoogle.com/"&gt;Google Summer of Code&lt;/a&gt; or GSoC is a global,
+online mentoring program focused on bringing new contributors into the open-source software world.&lt;/p&gt;
+&lt;p&gt;Every year, the GSoC &lt;a href="https://developers.google.com/open-source/gsoc/timeline"&gt;timeline&lt;/a&gt; is announced, with the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Organizations application period&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Orgs willing to provide mentorship for new contributors start submitting their applications to the GSoC team.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Project ideas discussion&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Potential contributors start discussing project ideas they can work on with the accepted orgs.&lt;/li&gt;
+&lt;li&gt;In practice, most orgs already have a GSoC project ideas list published for that year, e.g., &lt;a href="https://wiki.postgresql.org/wiki/GSoC_2025"&gt;Postgres GSoC'25 Ideas List&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Contributor application period&lt;/p&gt;</description></item><item><title>GSoC'25 at PostgreSQL: Work and Results</title><link>https://0xgouda.github.io/posts/my-postgresql-gsoc25-journey/work-and-results/</link><pubDate>Tue, 17 Jun 2025 16:44:04 +0300</pubDate><guid>https://0xgouda.github.io/posts/my-postgresql-gsoc25-journey/work-and-results/</guid><description>&lt;p&gt;In the &lt;a href="./acceptance.md"&gt;previous post&lt;/a&gt;, I discussed GSoC,
+my road to acceptance at PostgreSQL, and my project deliverables.&lt;/p&gt;
+&lt;p&gt;Today, I will share my experience with the PostgreSQL community, and the work I did.&lt;/p&gt;
+&lt;h3 id="postgres-community-bonding"&gt;Postgres Community Bonding&lt;/h3&gt;
+&lt;p&gt;The first phase of GSoC is community bonding, where the mentee gets to know the community of his organization.&lt;/p&gt;
+&lt;p&gt;For Postgres, I started searching for the communication channels used by contributors, I found out about &lt;a href="https://www.postgresql.org/list/"&gt;Postgres mailing lists&lt;/a&gt; which unfortunately I hadn&amp;rsquo;t been involved into it that much till now, but I also discovered the &lt;a href="https://discord.gg/GavkM38HNX"&gt;PostgreSQL Hacking&lt;/a&gt; Discord channel and the Hacking Workshops they host every month to study and discuss PostgreSQL topics, which have been a great learning resource for me since then.&lt;/p&gt;</description></item></channel></rss>
