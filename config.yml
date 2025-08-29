@@ -19,13 +19,12 @@ outputFormats:
   RSS:
     baseName: "feed"
 
-
 params:
+  author: Ahmed Gouda
   env: production
   title: Ahmed Gouda
   description: "Talking Tech and Exploring Software Internals"
   keywords: [Blog, Portfolio, PaperMod]
-  author: Ahmed Gouda
   DateFormat: "January 2, 2006"
   defaultTheme: dark # dark, light, auto
   disableThemeToggle: false

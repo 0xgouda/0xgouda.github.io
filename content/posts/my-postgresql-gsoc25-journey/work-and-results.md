@@ -1,5 +1,5 @@
 +++
-date = '2025-08-29T16:44:04+03:00'
+date = '2025-08-30T00:44:04+03:00'
 draft = false
 title = "GSoC'25 at PostgreSQL: Work and Results"
 tags = ["postgresql", "gsoc"]
