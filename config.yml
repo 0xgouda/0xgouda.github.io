@@ -29,7 +29,7 @@ params:
   defaultTheme: dark # dark, light, auto
   disableThemeToggle: false
 
-  ShowReadingTime: false
+  ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
@@ -52,9 +52,9 @@ params:
   homeInfoParams:
     Title: $ whoami
     Content: |
-      - I'm a software engineer who loves exploring software internals,  
-        contributing to open source, and building cool stuff from scratch.  
-      - Currently I am part of [PostgreSQL's GSoC'25 program](https://summerofcode.withgoogle.com/programs/2025/projects/4Be9mT3p)
+      - I'm **Ahmed Gouda** a software engineer who loves exploring software internals,  
+        contributing to open source, and building cool technologies from scratch.  
+      - Currently I am part of [PostgreSQL's GSoC'25 program](https://summerofcode.withgoogle.com/programs/2025/projects/4Be9mT3p).
 
   socialIcons:
     - name: github
@@ -63,6 +63,8 @@ params:
       url: "https://www.linkedin.com/in/ahmed-gouda-1462b022b"
     - name: X
       url: "https://x.com/gouda0x"
+    - name: RSS
+      url: "/feed.xml"
 
   cover:
     hidden: false
